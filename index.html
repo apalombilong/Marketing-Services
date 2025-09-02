@@ -22,7 +22,7 @@
       <a href="#" class="font-black tracking-tight text-xl">Moda<span class="text-indigo-400"></span></a>
       <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
         <a href="#services" class="hover:text-white">Services</a>
-        <a href="#portfolio" class="hover:text-white">Portfolio</a>
+        <a href="#ads" class="hover:text-white">Ads</a>
         <a href="#designs" class="hover:text-white">Designs</a>
         <a href="#pricing" class="hover:text-white">Pricing</a>
         <a href="#contact" class="hover:text-white">Contact</a>
@@ -102,49 +102,109 @@
 </section>
 
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="max-w-6xl mx-auto px-4 pb-6">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-black">Portfolio</h2>
-        <p class="mt-2 text-neutral-300">A few clothing projects.</p>
+<!-- ADS -->
+<section id="ads" class="max-w-6xl mx-auto px-4 pb-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <!-- Bigger heading -->
+      <h2 class="text-4xl md:text-5xl font-black">Ads</h2>
+      <p class="mt-2 text-neutral-300">Reels, brand promos, and image ads built to convert.</p>
+    </div>
+  </div>
+
+  <!-- Reels -->
+  <div class="mt-10">
+    <h3 class="text-2xl font-bold">Reels</h3>
+    <p class="text-neutral-400 text-sm mt-1">Drop MP4/H.264 files or Instagram embeds.</p>
+    <div class="mt-4 grid md:grid-cols-2 gap-6">
+      <!-- Reel card (replace the placeholders with your own <video> or embed) -->
+      <div class="group rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40 p-3">
+        <!-- Example MP4; replace src with your file -->
+        <!-- <video class="w-full rounded-xl" controls playsinline preload="metadata" src="reel-01.mp4"></video> -->
+        <div class="aspect-video rounded-xl bg-neutral-800 grid place-items-center text-neutral-400 text-sm">
+          Add reel: <code>reel-01.mp4</code>
+        </div>
+        <div class="mt-2 text-xs text-neutral-400">Hook-first edit • 9–12s • Reels/TT</div>
+      </div>
+
+      <div class="group rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40 p-3">
+        <!-- <video class="w-full rounded-xl" controls playsinline preload="metadata" src="reel-02.mp4"></video> -->
+        <div class="aspect-video rounded-xl bg-neutral-800 grid place-items-center text-neutral-400 text-sm">
+          Add reel: <code>reel-02.mp4</code>
+        </div>
+        <div class="mt-2 text-xs text-neutral-400">UGC-style motion • 6–8s • Stories</div>
       </div>
     </div>
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  </div>
+
+  <!-- Clothing Brand Ads -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold">Clothing Brand Ads</h3>
+    <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="allweneedismoney.png" alt="All We Need Is Money Hoodie"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="allweneedismoney.png" alt="All We Need Is Money Hoodie">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">All We Need Is Money Hoodie</div>
       </div>
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="stussy.png" alt="Stüssy Dogs Graphic"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="stussy.png" alt="Stüssy Dogs Graphic">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">Stüssy Dogs Graphic</div>
       </div>
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="statueofliberty.png" alt="Statue of Liberty Set"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="statueofliberty.png" alt="Statue of Liberty Set">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">Statue of Liberty Set</div>
       </div>
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="ghostfit.png" alt="Ghostfit Outfit"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="ghostfit.png" alt="Ghostfit Outfit">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">Ghostfit Outfit</div>
       </div>
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="tuffzipup.png" alt="Tuff Zip-Up"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="tuffzipup.png" alt="Tuff Zip-Up">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">Tuff Zip-Up</div>
       </div>
       <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="yellowhoodie.png" alt="Yellow Hoodie"/>
+        <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="yellowhoodie.png" alt="Yellow Hoodie">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-3 left-3 text-sm">Yellow Hoodie</div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Image Ads -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold">Image Ads</h3>
+    <p class="text-neutral-400 text-sm mt-1">Single-frame promos for feeds and stories.</p>
+    <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Reuse any ad-style stills here later -->
+      <div class="rounded-2xl overflow-hidden border border-dashed border-white/10 bg-neutral-900/40 grid place-items-center h-64 text-neutral-500 text-sm">
+        Add image ad (e.g., <code>ad-still-01.jpg</code>)
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-dashed border-white/10 bg-neutral-900/40 grid place-items-center h-64 text-neutral-500 text-sm">
+        Add image ad
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-dashed border-white/10 bg-neutral-900/40 grid place-items-center h-64 text-neutral-500 text-sm">
+        Add image ad
+      </div>
+    </div>
+  </div>
+</section>
+
 
  <!-- DESIGNS -->
+
+<section id="designs" class="max-w-6xl mx-auto px-4 pb-6">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h2 class="text-3xl md:text-4xl font-black">Designs</h2>
+      <p class="mt-2 text-neutral-300">Artwork and ad-style visuals we’ve created.</p>
+    </div>
+  </div>
+  <!-- (cards you already have) -->
+
 <section id="designs" class="max-w-6xl mx-auto px-4 pb-6">
   <div class="flex items-end justify-between gap-4">
     <div>
