@@ -90,7 +90,7 @@
     </div>
   </section>
 
-  <!-- ADS -->
+  <!-- ADS (NOW STATIC GRIDS) -->
   <section id="ads" class="max-w-6xl mx-auto px-4 pb-12">
     <div class="flex items-end justify-between gap-4">
       <div>
@@ -99,36 +99,40 @@
       </div>
     </div>
 
-    <!-- CLOTHING BRAND ADS (4 only) -->
+    <!-- CLOTHING BRAND ADS (4 images) -->
     <div class="mt-10">
       <h3 class="text-2xl font-bold mb-4">Clothing Brand Ads</h3>
-      <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
-        <div class="relative" data-carousel="clothing">
-          <div class="viewport inline-block overflow-hidden rounded-xl bg-transparent mx-auto cursor-pointer select-none">
-            <img class="slide block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./hs.png"               alt="Moda Fit Ad" loading="lazy">
-            <img class="slide hidden block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./ghostfit.png"        alt="Ghostfit Outfit" loading="lazy">
-            <img class="slide hidden block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./stussy.png"          alt="Stüssy Dogs Graphic" loading="lazy">
-            <img class="slide hidden block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
-          </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./hs.png" alt="Moda Fit Ad" loading="lazy">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./ghostfit.png" alt="Ghostfit Outfit" loading="lazy">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./stussy.png" alt="Stüssy Dogs Graphic" loading="lazy">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
         </div>
       </div>
     </div>
 
-    <!-- IMAGE ADS (2 only) -->
+    <!-- IMAGE ADS (2 images) -->
     <div class="mt-12">
       <h3 class="text-2xl font-bold mb-4">Image Ads</h3>
-      <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
-        <div class="relative" data-carousel="image-ads">
-          <div class="viewport inline-block overflow-hidden rounded-xl bg-transparent mx-auto cursor-pointer select-none">
-            <img class="slide block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./imagead1.png" alt="Image Ad 1" loading="lazy">
-            <img class="slide hidden block h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./imagead2.png" alt="Image Ad 2" loading="lazy">
-          </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./imagead1.png" alt="Image Ad 1" loading="lazy">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
+          <img class="w-full h-64 object-cover" src="./imagead2.png" alt="Image Ad 2" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DESIGNS (only the ones you want) -->
+  <!-- DESIGNS (carousel with the specific files you want) -->
   <section id="designs" class="max-w-6xl mx-auto px-4 pb-12">
     <div class="flex items-end justify-between gap-4">
       <div>
@@ -142,7 +146,7 @@
         <div class="viewport inline-block overflow-hidden rounded-xl bg-transparent mx-auto cursor-pointer select-none">
           <img class="slide block  h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./undrwrld.jpg" alt="Underworld Cross" loading="lazy">
           <img class="slide hidden h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./bmw.jpg"      alt="BMW Cross"        loading="lazy">
-          <img class="slide hidden h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./skele.png"    alt="Skeleton Crown"   loading="lazy">
+          <img class="slide hidden h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./skele.jpg"    alt="Skeleton Crown"   loading="lazy">
           <img class="slide hidden h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./horses.jpg"   alt="Horses Pattern"   loading="lazy">
           <img class="slide hidden h-auto max-h-80 md:max-h-[28rem] w-auto max-w-full" src="./dog.jpg"      alt="Dog Graphic"      loading="lazy">
         </div>
@@ -161,7 +165,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (Google Form fixed with your embed) -->
   <section id="contact" class="max-w-6xl mx-auto px-4 py-16">
     <div class="grid md:grid-cols-2 gap-8 items-start">
       <div>
@@ -170,13 +174,13 @@
         <div class="mt-6 space-y-2 text-neutral-300">
           <div>Instagram: <a href="https://www.instagram.com/moda_markting/" target="_blank" class="underline">@moda_markting</a></div>
           <div>Email: <a href="mailto:modamarkets313@gmail.com" class="underline">modamarkets313@gmail.com</a></div>
-          <div>Open form: <a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" class="underline">Google Form</a></div>
         </div>
       </div>
       <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <!-- Replace YOUR_FORM_ID with the ID from Send → <> Embed -->
-        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-                width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <!-- Your exact form embed, made responsive on width -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScU1Rmc18VK_gwqHpP79nmRCN7cMfupi6pDfbBK7aVQbDa7fg/viewform?embedded=true"
+          width="100%" height="1276" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </div>
   </section>
@@ -186,25 +190,18 @@
     <a href="#contact" class="px-4 py-3 rounded-xl shadow-soft bg-indigo-500 hover:bg-indigo-600 font-semibold">Get a Quote</a>
   </div>
 
-  <!-- minimal carousel JS: click image to advance -->
+  <!-- Minimal carousel JS (Designs only) -->
   <script>
     function initCarousel(root){
       const slides = Array.from(root.querySelectorAll('.slide'));
       if (!slides.length) return;
-
-      // show only the first slide initially
       slides.forEach((s, idx) => s.classList.toggle('hidden', idx !== 0));
       let i = 0;
-
       function show(idx){
         i = (idx + slides.length) % slides.length;
         slides.forEach((s, j) => s.classList.toggle('hidden', j !== i));
       }
-
-      // click image to go next
       root.querySelector('.viewport')?.addEventListener('click', () => show(i + 1));
-
-      // keyboard + swipe (nice to have)
       root.setAttribute('tabindex','0');
       root.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') show(i + 1);
@@ -219,7 +216,6 @@
         x0 = null;
       }, {passive:true});
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-carousel]').forEach(initCarousel);
     });
