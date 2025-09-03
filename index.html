@@ -2,172 +2,169 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moda Marketing</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior:smooth }
+    /* Small component layer for consistent theme */
+    @layer components {
+      .section     {@apply max-w-6xl mx-auto px-6;}
+      .title-grad  {@apply bg-gradient-to-r from-indigo-300 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent;}
+      .btn         {@apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition active:scale-[.98];}
+      .btn-primary {@apply bg-indigo-500 text-white hover:bg-indigo-600 shadow-lg hover:shadow-indigo-500/30;}
+      .btn-ghost   {@apply bg-neutral-800 text-white hover:bg-neutral-700;}
+      .nav-link    {@apply text-neutral-300 hover:text-white relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-indigo-400 after:to-fuchsia-400 hover:after:w-full after:transition-all;}
+      .tile        {@apply rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40;}
+      .tile img    {@apply w-full h-full object-cover;}
+    }
+  </style>
 </head>
 <body class="bg-neutral-950 text-neutral-100">
 
   <!-- NAV -->
   <header class="w-full fixed top-0 left-0 z-50 bg-neutral-950/90 border-b border-white/10">
-    <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
-      <h1 class="text-xl font-bold">Moda</h1>
+    <div class="section flex items-center justify-between py-4">
+      <a href="#" class="font-black tracking-tight text-xl title-grad">Moda</a>
       <nav class="hidden md:flex gap-6 text-sm">
-        <a href="#services" class="hover:text-white">Services</a>
-        <a href="#ads" class="hover:text-white">Ads</a>
-        <a href="#designs" class="hover:text-white">Designs</a>
-        <a href="#pricing" class="hover:text-white">Pricing</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#ads" class="nav-link">Ads</a>
+        <a href="#designs" class="nav-link">Designs</a>
+        <a href="#quote" class="nav-link">Get a Quote</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
-      <a href="#contact" class="hidden md:inline-flex px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-sm font-semibold">Get a Quote</a>
+      <a href="#contact" class="hidden md:inline-flex btn btn-primary">Get a Quote</a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="max-w-6xl mx-auto px-6 pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center">
+  <section class="section pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center">
     <div>
-      <h2 class="text-5xl font-extrabold mb-4 text-indigo-400">Moda</h2>
-      <p class="text-gray-300 mb-6">
-        Creative Designs. High-Impact Ad Creatives. Apparel graphics, TikTok/Instagram ads, and custom visuals built to elevate your brand.
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 title-grad">MODA</h1>
+      <p class="text-neutral-300 mb-6">
+        Creative <span class="text-indigo-300 font-semibold">Designs</span> and high-impact
+        <span class="text-fuchsia-300 font-semibold">Ad Creatives</span> built to make your brand stand out.
+        Apparel graphics, Instagram/TikTok ads, and clean deliverables with fast turnarounds.
       </p>
-      <div class="flex gap-4">
-        <a href="#ads" class="px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 font-semibold">See Ads</a>
-        <a href="#designs" class="px-5 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 font-semibold">View Designs</a>
+      <div class="flex gap-3 flex-wrap">
+        <a href="#ads" class="btn btn-primary">See Ads</a>
+        <a href="#designs" class="btn btn-ghost">View Designs</a>
       </div>
       <div class="inline-block mt-6 px-4 py-2 rounded-2xl text-sm font-bold bg-indigo-500 text-white">24–48h draft turnaround</div>
     </div>
-    <div class="rounded-2xl overflow-hidden border border-white/10">
-      <img src="moda.png" alt="Moda Logo" class="w-full object-cover">
+    <div class="tile">
+      <img src="moda.png" alt="Moda brand"/>
     </div>
   </section>
 
-  <!-- SERVICES (with glow effect) -->
-  <section id="services" class="py-20 bg-black text-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-extrabold mb-6 text-purple-400">Services</h2>
-      <p class="text-lg text-gray-300 mb-14">
-        We specialize in bold visuals and ad-ready assets that elevate your brand.
-      </p>
+  <!-- IG HIGHLIGHTS (kept simple) -->
+  <section class="border-y border-white/5 bg-neutral-900/30">
+    <div class="section py-8 flex flex-wrap items-center gap-3 text-sm">
+      <span class="text-neutral-400">See our Instagram highlights:</span>
+      <a href="https://www.instagram.com/stories/highlights/17993201633683585/" target="_blank" class="px-3 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700">Designs</a>
+      <a href="https://www.instagram.com/stories/highlights/18081994600916704/" target="_blank" class="px-3 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700">Clothing Ads</a>
+    </div>
+  </section>
+
+  <!-- SERVICES (glow cards) -->
+  <section id="services" class="py-20 bg-black">
+    <div class="section text-center">
+      <h2 class="text-5xl font-extrabold mb-6 title-grad">Services</h2>
+      <p class="text-lg text-gray-300 mb-14">We specialize in bold visuals and ad-ready assets that elevate your brand.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        
         <!-- Designs -->
-        <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-purple-500/40 transform hover:-translate-y-2 transition duration-300">
-          <h3 class="text-2xl font-bold text-purple-300 mb-4">Designs</h3>
-          <p class="text-gray-300 mb-6">
-            Apparel graphics, posters, and artwork tailored to your brand.
-          </p>
+        <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-indigo-500/40 transform hover:-translate-y-2 transition duration-300">
+          <h3 class="text-2xl font-bold text-indigo-300 mb-4">Designs</h3>
+          <p class="text-gray-300 mb-6">Apparel graphics, posters, and artwork tailored to your brand.</p>
           <ul class="space-y-3 text-left">
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">✔</span>
-              Unique, custom visuals
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">✔</span>
-              Mockups for clothing lines, posters, and packaging
-            </li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-3">✔</span> Unique, custom visuals</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-3">✔</span> Mockups for clothing lines, posters, and packaging</li>
           </ul>
         </div>
 
         <!-- Ad Creatives -->
-        <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-pink-500/40 transform hover:-translate-y-2 transition duration-300">
-          <h3 class="text-2xl font-bold text-pink-300 mb-4">Ad Creatives</h3>
-          <p class="text-gray-300 mb-6">
-            High-performing Instagram/TikTok visuals designed to convert.
-          </p>
+        <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-fuchsia-500/40 transform hover:-translate-y-2 transition duration-300">
+          <h3 class="text-2xl font-bold text-fuchsia-300 mb-4">Ad Creatives</h3>
+          <p class="text-gray-300 mb-6">High-performing Instagram/TikTok visuals designed to convert.</p>
           <ul class="space-y-3 text-left">
-            <li class="flex items-start">
-              <span class="text-pink-400 mr-3">✔</span>
-              Short reels for TikTok/Instagram
-            </li>
-            <li class="flex items-start">
-              <span class="text-pink-400 mr-3">✔</span>
-              Eye-catching image ads
-            </li>
-            <li class="flex items-start">
-              <span class="text-pink-400 mr-3">✔</span>
-              Ready-to-upload export packs for Meta Ads Manager & TikTok Ads
-            </li>
+            <li class="flex items-start"><span class="text-fuchsia-400 mr-3">✔</span> Short reels for TikTok/Instagram</li>
+            <li class="flex items-start"><span class="text-fuchsia-400 mr-3">✔</span> Eye-catching image ads</li>
+            <li class="flex items-start"><span class="text-fuchsia-400 mr-3">✔</span> Ready-to-upload export packs for Meta Ads Manager & TikTok Ads</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ADS -->
-  <section id="ads" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-6">Ads</h2>
+  <section id="ads" class="section py-20">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-3 title-grad">Ads</h2>
+    <p class="text-neutral-300 mb-10">Clothing brand ads and image ads.</p>
+
+    <!-- Clothing Brand Ads -->
+    <h3 class="text-2xl font-bold mb-4 text-indigo-200">Clothing Brand Ads</h3>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="hs.png" alt="Clothing Ad"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="ghostfit.png" alt="Ghostfit"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="stussy.png" alt="Stussy"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="statueofliberty.png" alt="Statue of Liberty"></div>
+      <div class="tile"><img src="hs.png" alt="Moda Fit Ad"></div>
+      <div class="tile"><img src="ghostfit.png" alt="Ghostfit Outfit"></div>
+      <div class="tile"><img src="stussy.png" alt="Stüssy Dogs Graphic"></div>
+      <div class="tile"><img src="statueofliberty.png" alt="Statue of Liberty Set"></div>
     </div>
-    <h3 class="text-xl font-bold mt-12 mb-4">Image Ads</h3>
+
+    <!-- Image Ads (taller) -->
+    <h3 class="text-2xl font-bold mt-12 mb-4 text-fuchsia-200">Image Ads</h3>
     <div class="grid sm:grid-cols-2 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="imagead1.png" alt="Image Ad 1"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="imagead2.png" alt="Image Ad 2"></div>
+      <div class="tile" style="height: 550px;"><img src="imagead1.png" alt="Image Ad 1"></div>
+      <div class="tile" style="height: 550px;"><img src="imagead2.png" alt="Image Ad 2"></div>
     </div>
   </section>
 
   <!-- DESIGNS -->
-  <section id="designs" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-6">Designs</h2>
+  <section id="designs" class="section py-20">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-3 title-grad">Designs</h2>
+    <p class="text-neutral-300 mb-10">Artwork and visuals we’ve created.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="undrwrld.jpg" alt="Undrwrld"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="bmw.jpg" alt="BMW"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="skele.png" alt="Skeleton"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="horses.jpg" alt="Horses"></div>
-      <div class="rounded-2xl overflow-hidden border border-white/10"><img src="dog.jpg" alt="Dog"></div>
+      <div class="tile"><img src="undrwrld.jpg" alt="Underworld Cross"></div>
+      <div class="tile"><img src="bmw.jpg" alt="BMW Cross"></div>
+      <div class="tile"><img src="skele.png" alt="Skeleton Crown"></div>
+      <div class="tile"><img src="horses.jpg" alt="Horses Pattern"></div>
+      <div class="tile"><img src="dog.jpg" alt="Dog Graphic"></div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-6">Pricing</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <h3 class="text-xl font-bold">Starter</h3>
-        <p class="text-3xl font-extrabold mt-4 mb-6">$49</p>
-        <ul class="space-y-2 text-neutral-300">
-          <li>1 apparel design</li>
-          <li>1 mockup (tee/hoodie)</li>
-          <li>1 revision</li>
-        </ul>
+  <!-- GET A QUOTE (replaces Pricing) -->
+  <section id="quote" class="py-20 bg-neutral-900/40 border-y border-white/10">
+    <div class="section grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 title-grad">Get a Quote</h2>
+        <p class="text-neutral-300">
+          Tell us what you need—designs, image ads, or video creatives—and we’ll send a fast, customized quote
+          with clear deliverables and turnaround times.
+        </p>
+        <div class="mt-8 flex gap-3 flex-wrap">
+          <a href="#contact" class="btn btn-primary">Open Form</a>
+          <a href="mailto:modamarkets313@gmail.com" class="btn btn-ghost">Email Us</a>
+        </div>
       </div>
-      <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <h3 class="text-xl font-bold">Growth (Popular)</h3>
-        <p class="text-3xl font-extrabold mt-4 mb-6">$149</p>
-        <ul class="space-y-2 text-neutral-300">
-          <li>3 designs or 5 ad creatives</li>
-          <li>Mockups + export pack</li>
-          <li>2 revisions</li>
-        </ul>
-      </div>
-      <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <h3 class="text-xl font-bold">Creator</h3>
-        <p class="text-3xl font-extrabold mt-4 mb-6">$299/mo</p>
-        <ul class="space-y-2 text-neutral-300">
-          <li>Monthly ad/design pack</li>
-          <li>Priority turnaround</li>
-          <li>Unlimited small tweaks</li>
-        </ul>
+      <div class="tile">
+        <img src="moda.png" alt="Moda brand preview">
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-6">Start a project</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <p>Instagram: <a href="https://instagram.com/moda_marketing" class="underline">@moda_marketing</a></p>
-        <p>Email: <a href="mailto:modamarkets313@gmail.com" class="underline">modamarkets313@gmail.com</a></p>
+  <section id="contact" class="section py-20">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-3 title-grad">Start a project</h2>
+    <p class="text-neutral-300 mb-10">DM us on Instagram or email. Or fill out the form below.</p>
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div class="space-y-2">
+        <div>Instagram: <a href="https://www.instagram.com/moda_markting/" target="_blank" class="nav-link">@moda_markting</a></div>
+        <div>Email: <a href="mailto:modamarkets313@gmail.com" class="nav-link">modamarkets313@gmail.com</a></div>
       </div>
       <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScU1Rmc18VK_gwqHpP79nmRCN7cMfupi6pDfbBK7aVQbDa7fg/viewform?embedded=true"
-                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScU1Rmc18VK_gwqHpP79nmRCN7cMfupi6pDfbBK7aVQbDa7fg/viewform?embedded=true"
+          width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </div>
   </section>
