@@ -16,6 +16,45 @@
 </head>
 
   <script>
+
+   
+  function initCarousel(root){
+    const slides = Array.from(root.querySelectorAll('.slide'));
+    if (!slides.length) return;
+
+    // Ensure exactly one slide visible initially
+    slides.forEach((s, idx) => s.classList.toggle('hidden', idx !== 0));
+    let i = 0;
+
+    function show(idx){
+      i = (idx + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('hidden', j !== i));
+    }
+
+    // Click the viewport to advance
+    root.querySelector('.viewport')?.addEventListener('click', () => show(i + 1));
+
+    // Keyboard & swipe (nice to have)
+    root.setAttribute('tabindex','0');
+    root.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft')  show(i - 1);
+    });
+    let x0 = null, threshold = 30;
+    root.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+    root.addEventListener('touchend',   e => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > threshold) show(dx > 0 ? i - 1 : i + 1);
+      x0 = null;
+    }, {passive:true});
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+  });
+
+
   // Small helper to add Tailwind classes to the carousel buttons
   function styleButtons(root){
     root.querySelectorAll('.abs-btn').forEach(btn=>{
@@ -170,7 +209,7 @@
   </section>
 
 <!-- ADS -->
-<section id="ads" class="max-w-6xl mx-auto px-4 pb-14">
+<section id="ads" class="max-w-6xl mx-auto px-4 pb-12">
   <div class="flex items-end justify-between gap-4">
     <div>
       <h2 class="text-4xl md:text-5xl font-black">Ads</h2>
@@ -183,20 +222,24 @@
     <h3 class="text-2xl font-bold mb-4">Clothing Brand Ads</h3>
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="clothing">
-        <!-- smaller viewport -->
-        <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
-          <!-- First slide VISIBLE by default -->
-          <img class="slide w-full h-full object-cover"        src="./allweneedismoney.png" alt="All We Need Is Money Hoodie" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./stussy.png"            alt="Stüssy Dogs Graphic"       loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./statueofliberty.png"   alt="Statue of Liberty Set"     loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./hs.png"                alt="Moda Fit Ad"                loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./ghostfit.png"          alt="Ghostfit Outfit"           loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./tuffzipup.png"         alt="Tuff Zip-Up"                loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./yellowhoodie.png"      alt="Yellow Hoodie"              loading="lazy">
+        <!-- Viewport: centers image, keeps it contained -->
+        <div class="viewport overflow-hidden rounded-xl bg-neutral-800 max-h-80 md:max-h-[28rem] mx-auto grid place-items-center cursor-pointer select-none">
+          <!-- First slide is visible; others hidden -->
+          <img class="slide max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./allweneedismoney.png" alt="All We Need Is Money Hoodie" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./stussy.png" alt="Stüssy Dogs Graphic" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./hs.png" alt="Moda Fit Ad" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./ghostfit.png" alt="Ghostfit Outfit" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./tuffzipup.png" alt="Tuff Zip-Up" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./yellowhoodie.png" alt="Yellow Hoodie" loading="lazy">
         </div>
-        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
-        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
@@ -206,14 +249,15 @@
     <h3 class="text-2xl font-bold mb-4">Reels</h3>
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="reels">
-        <div class="overflow-hidden rounded-xl aspect-video bg-neutral-800 max-h-72 mx-auto grid place-items-center">
-          <div class="slide w-full h-full grid place-items-center text-neutral-400">Reel 01 (add video/embed)</div>
-          <div class="slide w-full h-full grid place-items-center text-neutral-400 hidden">Reel 02 (add video/embed)</div>
-          <div class="slide w-full h-full grid place-items-center text-neutral-400 hidden">Reel 03 (add video/embed)</div>
+        <div class="viewport overflow-hidden rounded-xl bg-neutral-800 max-h-72 md:max-h-80 mx-auto grid place-items-center cursor-pointer select-none">
+          <!-- Use posters or thumbnails; click advances -->
+          <img class="slide max-h-72 md:max-h-80 w-auto h-auto object-contain"
+               src="./reel-thumb-01.png" alt="Reel 01" loading="lazy">
+          <img class="slide hidden max-h-72 md:max-h-80 w-auto h-auto object-contain"
+               src="./reel-thumb-02.png" alt="Reel 02" loading="lazy">
+          <img class="slide hidden max-h-72 md:max-h-80 w-auto h-auto object-contain"
+               src="./reel-thumb-03.png" alt="Reel 03" loading="lazy">
         </div>
-        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
-        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
@@ -223,13 +267,12 @@
     <h3 class="text-2xl font-bold mb-4">Image Ads</h3>
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="image-ads">
-        <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
-          <img class="slide w-full h-full object-cover"        src="./imagead1.png" alt="Image Ad 1" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./imagead2.png" alt="Image Ad 2" loading="lazy">
+        <div class="viewport overflow-hidden rounded-xl bg-neutral-800 max-h-80 md:max-h-[28rem] mx-auto grid place-items-center cursor-pointer select-none">
+          <img class="slide max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./imagead1.png" alt="Image Ad 1" loading="lazy">
+          <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+               src="./imagead2.png" alt="Image Ad 2" loading="lazy">
         </div>
-        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
-        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
@@ -237,8 +280,9 @@
 
 
 
-  <!-- DESIGNS -->
-<section id="designs" class="max-w-6xl mx-auto px-4 pb-10">
+
+<!-- DESIGNS -->
+<section id="designs" class="max-w-6xl mx-auto px-4 pb-12">
   <div class="flex items-end justify-between gap-4">
     <div>
       <h2 class="text-3xl md:text-4xl font-black">Designs</h2>
@@ -248,24 +292,30 @@
 
   <div class="mt-6 rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
     <div class="relative" data-carousel="designs">
-      <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
-        <!-- First slide visible -->
-        <img class="slide w-full h-full object-cover"        src="./1800raceme-copy.jpg" alt="Drift Racers" loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./bmw.jpg"             alt="BMW Cross"    loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./bradpitt-1.jpg"      alt="Brad Pitt 1"  loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./bradpitt-2.jpg"      alt="Brad Pitt 2"  loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./cross.jpg"           alt="Cross"        loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./divine.jpg"          alt="Divine"       loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./dog.jpg"             alt="Dog"          loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./kd.jpg"              alt="Basketball"   loading="lazy">
-        <img class="slide w-full h-full object-cover hidden" src="./snow-people.jpg"     alt="Snow People"  loading="lazy">
+      <div class="viewport overflow-hidden rounded-xl bg-neutral-800 max-h-80 md:max-h-[28rem] mx-auto grid place-items-center cursor-pointer select-none">
+        <img class="slide max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./1800raceme-copy.jpg" alt="Drift Racers" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./bmw.jpg" alt="BMW Cross" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./bradpitt-1.jpg" alt="Brad Pitt Neon" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./bradpitt-2.jpg" alt="Brad Pitt Gold" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./cross.jpg" alt="Cross" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./divine.jpg" alt="Divine" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./dog.jpg" alt="Dog" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./kd.jpg" alt="Basketball" loading="lazy">
+        <img class="slide hidden max-h-80 md:max-h-[28rem] w-auto h-auto object-contain"
+             src="./snow-people.jpg" alt="Snow People" loading="lazy">
       </div>
-      <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
-      <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-      <div class="dots mt-3 flex items-center justify-center gap-2"></div>
     </div>
   </div>
 </section>
+
 
   <!-- PRICING → replaced by CTA -->
   <section id="pricing" class="max-w-6xl mx-auto px-4 py-20">
