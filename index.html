@@ -1,234 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moda — Designs & Ad Creatives</title>
-  <meta name="description" content="Custom apparel designs, ad creatives, and mockups. Fast turnarounds. IG-ready packages." />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moda Marketing</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
-    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.07); }
-    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.12); }
-    section[id] { scroll-margin-top: 96px; }
+    html { scroll-behavior:smooth }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.06) }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.18) }
+
+    @layer components {
+      /* ===== Buttons ===== */
+      .btn {@apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold transition active:scale-[.98] select-none;}
+      .btn-primary {@apply bg-indigo-500 text-white shadow-lg hover:bg-indigo-600 hover:shadow-indigo-500/30;}
+      .btn-secondary {@apply bg-neutral-800 text-white hover:bg-neutral-700 shadow;}
+      .btn-ghost {@apply bg-transparent text-white/90 hover:text-white border border-white/10 hover:border-white/20;}
+
+      /* Pills */
+      .pill {@apply inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-bold bg-indigo-500/90 text-white shadow;}
+
+      /* ===== Headings ===== */
+      .section {@apply max-w-6xl mx-auto px-4 md:px-6;}
+      .section-title {@apply text-4xl md:text-5xl font-extrabold tracking-tight mb-3;}
+      .section-sub {@apply text-neutral-300;}
+
+      /* ===== Cards ===== */
+      .card {@apply p-8 rounded-2xl border border-white/10 bg-neutral-900/50;}
+      .card-pop {@apply hover:-translate-y-1 hover:shadow-2xl transition transform hover:shadow-indigo-500/20;}
+      .tile {@apply rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40;}
+      .tile img {@apply w-full h-full object-cover transition duration-300;}
+      .tile:hover img {@apply scale-105;}
+      .tile-16x9 { aspect-ratio: 16/9; }
+      .tile-4x5  { aspect-ratio: 4/5; }
+      .tile-1x1  { aspect-ratio: 1/1; }
+
+      /* ===== Nav ===== */
+      .nav-link {@apply text-neutral-300 hover:text-white relative after:absolute after:left-0 after:-bottom-1
+                        after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-indigo-400 after:to-fuchsia-400
+                        hover:after:w-full after:transition-all;}
+    }
   </style>
 </head>
-<body class="bg-neutral-950 text-neutral-100 selection:bg-white/20 selection:text-white">
+<body class="bg-neutral-950 text-neutral-100">
 
   <!-- NAV -->
-  <header class="sticky top-0 z-50 bg-neutral-950/80 glass border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#" class="font-black tracking-tight text-xl">Moda<span class="text-indigo-400"></span></a>
-      <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
-        <a href="#services" class="hover:text-white">Services</a>
-        <a href="#ads" class="hover:text-white">Ads</a>
-        <a href="#designs" class="hover:text-white">Designs</a>
-        <a href="#pricing" class="hover:text-white">Pricing</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
+  <header class="w-full fixed top-0 left-0 z-50 bg-neutral-950/90 border-b border-white/10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+      <h1 class="text-xl font-bold">Moda</h1>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#ads" class="nav-link">Ads</a>
+        <a href="#designs" class="nav-link">Designs</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
-      <a href="#contact" class="md:inline-flex hidden px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 transition shadow-soft text-sm font-semibold">Get a Quote</a>
+      <a href="#contact" class="btn btn-primary hidden md:inline-flex">Get a Quote</a>
     </div>
   </header>
 
-<!-- HERO -->
-<section class="relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-fuchsia-600/20 to-transparent pointer-events-none"></div>
-  <div class="max-w-6xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-    
-    <!-- LEFT: MODA text + tagline -->
+  <!-- HERO -->
+  <section class="section pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center">
     <div>
-      <h1 class="text-5xl md:text-7xl font-black leading-tight mb-4 bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">
-        MODA
-      </h1>
-      <p class="mt-4 text-lg md:text-xl text-neutral-300 max-w-xl">
-        Creative <span class="text-indigo-400 font-semibold">Designs</span> and
-        high-impact <span class="text-indigo-400 font-semibold">Ad Creatives</span>
-        built to make your brand stand out.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#ads" class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold shadow-soft">See Ads</a>
-        <a href="#designs" class="px-5 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition font-semibold">View Designs</a>
+      <h2 class="section-title bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">Moda</h2>
+      <p class="section-sub mb-6">Creative Designs. High-Impact Ad Creatives. Apparel graphics, TikTok/Instagram ads, and custom visuals built to elevate your brand.</p>
+      <div class="flex gap-4">
+        <a href="#ads" class="btn btn-primary">See Ads</a>
+        <a href="#designs" class="btn btn-secondary">View Designs</a>
       </div>
-      <div class="mt-6 text-sm text-neutral-400">
-        Trusted by small brands, clothing lines, and local businesses.
-      </div>
+      <div class="pill mt-6">24–48h draft turnaround</div>
     </div>
-
-    <!-- RIGHT: Moda image -->
-    <div class="relative">
-      <div class="rounded-3xl bg-neutral-900 border border-white/10 shadow-soft overflow-hidden">
-        <img src="./moda.png" alt="Moda logo design" class="w-full h-auto object-contain"/>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <!-- IG HIGHLIGHTS -->
-  <section class="border-y border-white/5 bg-neutral-900/30">
-    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center gap-3 text-sm">
-      <span class="text-neutral-400">See our Instagram highlights:</span>
-      <a href="https://www.instagram.com/stories/highlights/17993201633683585/" target="_blank" class="px-3 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700">Designs</a>
-      <a href="https://www.instagram.com/stories/highlights/18081994600916704/" target="_blank" class="px-3 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700">Clothing Ads</a>
+    <div class="tile tile-4x5">
+      <img src="moda.png" alt="Moda Logo">
     </div>
   </section>
 
-  <section class="py-20 bg-black text-white">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-5xl font-extrabold mb-6 text-purple-400">Services</h2>
-    <p class="text-lg text-gray-300 mb-14">
-      We specialize in bold visuals and ad-ready assets that elevate your brand.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      
-      <!-- Designs -->
-      <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-purple-500/40 transform hover:-translate-y-2 transition duration-300">
-        <h3 class="text-2xl font-bold text-purple-300 mb-4">Designs</h3>
-        <p class="text-gray-300 mb-6">
-          Apparel graphics, posters, and artwork tailored to your brand.
-        </p>
-        <ul class="space-y-3 text-left">
-          <li class="flex items-start">
-            <span class="text-purple-400 mr-3">✔</span>
-            Unique, custom visuals
-          </li>
-          <li class="flex items-start">
-            <span class="text-purple-400 mr-3">✔</span>
-            Mockups for clothing lines, posters, and packaging
-          </li>
+  <!-- SERVICES -->
+  <section id="services" class="section py-20">
+    <h2 class="section-title bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">Services</h2>
+    <p class="section-sub mb-10">We specialize in bold visuals and ad-ready assets that elevate your brand.</p>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card card-pop">
+        <h3 class="text-2xl font-bold text-indigo-300 mb-3">Designs</h3>
+        <p class="text-neutral-300 mb-6">Apparel graphics, posters, and artwork tailored to your brand.</p>
+        <ul class="space-y-3 text-neutral-200">
+          <li><span class="text-indigo-400 mr-2">✔</span> Unique, custom visuals</li>
+          <li><span class="text-indigo-400 mr-2">✔</span> Mockups for clothing lines, posters, and packaging</li>
         </ul>
       </div>
-
-      <!-- Ad Creatives -->
-      <div class="p-10 rounded-2xl bg-neutral-900 shadow-lg hover:shadow-pink-500/40 transform hover:-translate-y-2 transition duration-300">
-        <h3 class="text-2xl font-bold text-pink-300 mb-4">Ad Creatives</h3>
-        <p class="text-gray-300 mb-6">
-          High-performing Instagram/TikTok visuals designed to convert.
-        </p>
-        <ul class="space-y-3 text-left">
-          <li class="flex items-start">
-            <span class="text-pink-400 mr-3">✔</span>
-            Short reels for TikTok/Instagram
-          </li>
-          <li class="flex items-start">
-            <span class="text-pink-400 mr-3">✔</span>
-            Eye-catching image ads
-          </li>
-          <li class="flex items-start">
-            <span class="text-pink-400 mr-3">✔</span>
-            Ready-to-upload export packs for Meta Ads Manager & TikTok Ads
-          </li>
+      <div class="card card-pop">
+        <h3 class="text-2xl font-bold text-pink-300 mb-3">Ad Creatives</h3>
+        <p class="text-neutral-300 mb-6">High-performing Instagram/TikTok visuals designed to convert.</p>
+        <ul class="space-y-3 text-neutral-200">
+          <li><span class="text-pink-400 mr-2">✔</span> Short reels for TikTok/Instagram</li>
+          <li><span class="text-pink-400 mr-2">✔</span> Eye-catching image ads</li>
+          <li><span class="text-pink-400 mr-2">✔</span> Ready-to-upload export packs for Meta Ads Manager & TikTok Ads</li>
         </ul>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ADS -->
-  <section id="ads" class="max-w-6xl mx-auto px-4 pb-12">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-4xl md:text-5xl font-black">Ads</h2>
-        <p class="mt-2 text-neutral-300">Clothing brand ads and image ads.</p>
-      </div>
+  <section id="ads" class="section py-20">
+    <h2 class="section-title">Ads</h2>
+    <p class="section-sub mb-10">Reels, clothing brand ads, and image ads we’ve created.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="tile tile-4x5"><img src="hs.png" alt="Clothing Ad"></div>
+      <div class="tile tile-4x5"><img src="ghostfit.png" alt="Ghostfit"></div>
+      <div class="tile tile-4x5"><img src="stussy.png" alt="Stussy"></div>
+      <div class="tile tile-4x5"><img src="statueofliberty.png" alt="Statue of Liberty"></div>
     </div>
-
-    <!-- CLOTHING BRAND ADS -->
-    <div class="mt-10">
-      <h3 class="text-2xl font-bold mb-4">Clothing Brand Ads</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-80 object-cover" src="./hs.png" alt="Moda Fit Ad" loading="lazy">
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-80 object-cover" src="./ghostfit.png" alt="Ghostfit Outfit" loading="lazy">
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-80 object-cover" src="./stussy.png" alt="Stüssy Dogs Graphic" loading="lazy">
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-80 object-cover" src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-<!-- IMAGE ADS -->
-<section id="image-ads" class="max-w-6xl mx-auto px-4 py-20">
-  <h2 class="text-3xl md:text-4xl font-black mb-6">Image Ads</h2>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-    <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-      <img class="w-full h-[550px] object-cover" src="./imagead1.png" alt="Image Ad 1"/>
-    </div>
-    <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-      <img class="w-full h-[550px] object-cover" src="./imagead2.png" alt="Image Ad 2"/>
-    </div>
-  </div>
-</section>
-
-  <!-- DESIGNS (grid instead of carousel) -->
-  <section id="designs" class="max-w-6xl mx-auto px-4 pb-12">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-black">Designs</h2>
-        <p class="mt-2 text-neutral-300">Artwork and visuals we’ve created.</p>
-      </div>
-    </div>
-
-    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-80 object-cover" src="./undrwrld.jpg" alt="Underworld Cross" loading="lazy">
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-80 object-cover" src="./bmw.jpg" alt="BMW Cross" loading="lazy">
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-80 object-cover" src="./skele.png" alt="Skeleton Crown" loading="lazy">
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-80 object-cover" src="./horses.jpg" alt="Horses Pattern" loading="lazy">
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-80 object-cover" src="./dog.jpg" alt="Dog Graphic" loading="lazy">
-      </div>
+    <h3 class="text-2xl font-bold mt-12 mb-6">Image Ads</h3>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="tile tile-16x9"><img src="imagead1.png" alt="Image Ad 1"></div>
+      <div class="tile tile-16x9"><img src="imagead2.png" alt="Image Ad 2"></div>
     </div>
   </section>
 
-  <!-- PRICING (CTA only) -->
-  <section id="pricing" class="max-w-6xl mx-auto px-4 py-20">
-    <h2 class="text-3xl md:text-4xl font-black">Pricing</h2>
-    <p class="mt-2 text-neutral-300 max-w-2xl">Contact us for pricing and a fast custom quote based on your project scope.</p>
-    <div class="mt-8">
-      <a href="#contact" class="inline-flex px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 font-semibold shadow-soft">
-        Get a Quote
-      </a>
+  <!-- DESIGNS -->
+  <section id="designs" class="section py-20">
+    <h2 class="section-title">Designs</h2>
+    <p class="section-sub mb-10">Artwork and ad-style visuals we’ve created.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="tile tile-4x5"><img src="undrwrld.jpg" alt="Undrwrld"></div>
+      <div class="tile tile-4x5"><img src="bmw.jpg" alt="BMW"></div>
+      <div class="tile tile-4x5"><img src="skele.jpg" alt="Skeleton"></div>
+      <div class="tile tile-4x5"><img src="horses.jpg" alt="Horses"></div>
+      <div class="tile tile-4x5"><img src="dog.jpg" alt="Dog"></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section py-20">
+    <h2 class="section-title">Pricing</h2>
+    <p class="section-sub mb-10">Edit these numbers as you like. Or offer custom quotes.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card card-pop">
+        <h3 class="text-xl font-bold">Starter</h3>
+        <p class="text-4xl font-extrabold mt-4 mb-6">$49</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li>1 apparel design</li>
+          <li>1 mockup (tee/hoodie)</li>
+          <li>1 revision</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary mt-6 w-full">Book</a>
+      </div>
+      <div class="card card-pop ring-2 ring-indigo-500/40">
+        <h3 class="text-xl font-bold">Growth (Popular)</h3>
+        <p class="text-4xl font-extrabold mt-4 mb-6">$149</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li>3 designs or 5 ad creatives</li>
+          <li>Mockups + export pack</li>
+          <li>2 revisions</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary mt-6 w-full">Book</a>
+      </div>
+      <div class="card card-pop">
+        <h3 class="text-xl font-bold">Creator</h3>
+        <p class="text-4xl font-extrabold mt-4 mb-6">$299/mo</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li>Monthly ad/design pack</li>
+          <li>Priority turnaround</li>
+          <li>Unlimited small tweaks</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary mt-6 w-full">Apply</a>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-16">
-    <div class="grid md:grid-cols-2 gap-8 items-start">
+  <section id="contact" class="section py-20">
+    <h2 class="section-title">Start a project</h2>
+    <p class="section-sub mb-10">DM us on Instagram or email. Or fill out the form below.</p>
+    <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <h2 class="text-3xl md:text-4xl font-black">Start a project</h2>
-        <p class="mt-2 text-neutral-300">DM us on Instagram or email. Share links to inspo and your deadline.</p>
-        <div class="mt-6 space-y-2 text-neutral-300">
-          <div>Instagram: <a href="https://www.instagram.com/moda_markting/" target="_blank" class="underline">@moda_markting</a></div>
-          <div>Email: <a href="mailto:modamarkets313@gmail.com" class="underline">modamarkets313@gmail.com</a></div>
-        </div>
+        <p>Instagram: <a href="https://instagram.com/moda_marketing" class="nav-link">@moda_marketing</a></p>
+        <p>Email: <a href="mailto:modamarkets313@gmail.com" class="nav-link">modamarkets313@gmail.com</a></p>
       </div>
-      <div class="p-6 rounded-2xl border border-white/10 bg-neutral-900/40">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLScU1Rmc18VK_gwqHpP79nmRCN7cMfupi6pDfbBK7aVQbDa7fg/viewform?embedded=true"
-          width="100%" height="1276" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <div class="card">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScU1Rmc18VK_gwqHpP79nmRCN7cMfupi6pDfbBK7aVQbDa7fg/viewform?embedded=true"
+                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </div>
   </section>
 
-  <!-- Sticky CTA -->
-  <div class="fixed bottom-4 right-4 z-50">
-    <a href="#contact" class="px-4 py-3 rounded-xl shadow-soft bg-indigo-500 hover:bg-indigo-600 font-semibold">Get a Quote</a>
-  </div>
+  <footer class="text-center py-10 text-neutral-500 text-sm">
+    © 2025 Moda Marketing. All rights reserved.
+  </footer>
 </body>
 </html>
