@@ -15,9 +15,7 @@
   </style>
 </head>
 
-  <script>
-
-   
+<script>
   function initCarousel(root){
     const slides = Array.from(root.querySelectorAll('.slide'));
     if (!slides.length) return;
@@ -53,79 +51,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   });
-
-
-  // Small helper to add Tailwind classes to the carousel buttons
-  function styleButtons(root){
-    root.querySelectorAll('.abs-btn').forEach(btn=>{
-      btn.classList.add(
-        'absolute','top-1/2','-translate-y-1/2','z-10',
-        'rounded-full','bg-black/60','backdrop-blur','text-white',
-        'w-10','h-10','grid','place-items-center','text-2xl',
-        'hover:bg-black/80','transition','select-none'
-      );
-    });
-  }
-
-  function initCarousel(root){
-    const slides = Array.from(root.querySelectorAll('.slide'));
-    if (!slides.length) return;
-
-    let i = 0;               // current index
-    const dotsWrap = root.querySelector('.dots');
-
-    function show(idx){
-      i = (idx + slides.length) % slides.length;
-      slides.forEach((s, j) => s.classList.toggle('hidden', j !== i));
-      if (dotsWrap){
-        dotsWrap.querySelectorAll('button').forEach((d, j)=>{
-          d.classList.toggle('opacity-100', j === i);
-          d.classList.toggle('opacity-40', j !== i);
-          d.classList.toggle('ring-2', j === i);
-        });
-      }
-    }
-
-    // Build dots
-    if (dotsWrap){
-      dotsWrap.innerHTML = '';
-      slides.forEach((_, j)=>{
-        const b = document.createElement('button');
-        b.className = 'w-2.5 h-2.5 rounded-full bg-white opacity-40 hover:opacity-70 transition ring-indigo-500/50';
-        b.addEventListener('click', ()=>show(j));
-        dotsWrap.appendChild(b);
-      });
-    }
-
-    // Prev/Next
-    root.querySelector('[data-action="prev"]')?.addEventListener('click', ()=>show(i-1));
-    root.querySelector('[data-action="next"]')?.addEventListener('click', ()=>show(i+1));
-
-    // Keyboard (when focused)
-    root.setAttribute('tabindex','0');
-    root.addEventListener('keydown', (e)=>{
-      if (e.key === 'ArrowLeft') show(i-1);
-      if (e.key === 'ArrowRight') show(i+1);
-    });
-
-    // Swipe
-    let x0 = null;
-    const threshold = 30;
-    root.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
-    root.addEventListener('touchend', e => {
-      if (x0 == null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > threshold) show(dx > 0 ? i-1 : i+1);
-      x0 = null;
-    }, {passive:true});
-
-    show(0);
-    styleButtons(root);
-  }
-
-  // init all carousels
-  document.querySelectorAll('[data-carousel]').forEach(initCarousel);
 </script>
+
 
 <body class="bg-neutral-950 text-neutral-100 selection:bg-white/20 selection:text-white">
 
