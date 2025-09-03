@@ -14,6 +14,80 @@
     section[id] { scroll-margin-top: 96px; }
   </style>
 </head>
+
+  <script>
+  // Small helper to add Tailwind classes to the carousel buttons
+  function styleButtons(root){
+    root.querySelectorAll('.abs-btn').forEach(btn=>{
+      btn.classList.add(
+        'absolute','top-1/2','-translate-y-1/2','z-10',
+        'rounded-full','bg-black/60','backdrop-blur','text-white',
+        'w-10','h-10','grid','place-items-center','text-2xl',
+        'hover:bg-black/80','transition','select-none'
+      );
+    });
+  }
+
+  function initCarousel(root){
+    const slides = Array.from(root.querySelectorAll('.slide'));
+    if (!slides.length) return;
+
+    let i = 0;               // current index
+    const dotsWrap = root.querySelector('.dots');
+
+    function show(idx){
+      i = (idx + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('hidden', j !== i));
+      if (dotsWrap){
+        dotsWrap.querySelectorAll('button').forEach((d, j)=>{
+          d.classList.toggle('opacity-100', j === i);
+          d.classList.toggle('opacity-40', j !== i);
+          d.classList.toggle('ring-2', j === i);
+        });
+      }
+    }
+
+    // Build dots
+    if (dotsWrap){
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, j)=>{
+        const b = document.createElement('button');
+        b.className = 'w-2.5 h-2.5 rounded-full bg-white opacity-40 hover:opacity-70 transition ring-indigo-500/50';
+        b.addEventListener('click', ()=>show(j));
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    // Prev/Next
+    root.querySelector('[data-action="prev"]')?.addEventListener('click', ()=>show(i-1));
+    root.querySelector('[data-action="next"]')?.addEventListener('click', ()=>show(i+1));
+
+    // Keyboard (when focused)
+    root.setAttribute('tabindex','0');
+    root.addEventListener('keydown', (e)=>{
+      if (e.key === 'ArrowLeft') show(i-1);
+      if (e.key === 'ArrowRight') show(i+1);
+    });
+
+    // Swipe
+    let x0 = null;
+    const threshold = 30;
+    root.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+    root.addEventListener('touchend', e => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > threshold) show(dx > 0 ? i-1 : i+1);
+      x0 = null;
+    }, {passive:true});
+
+    show(0);
+    styleButtons(root);
+  }
+
+  // init all carousels
+  document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+</script>
+
 <body class="bg-neutral-950 text-neutral-100 selection:bg-white/20 selection:text-white">
 
   <!-- NAV -->
@@ -95,89 +169,83 @@
     </div>
   </section>
 
-  <!-- ADS (replaces old portfolio; bigger heading; with subsections) -->
-  <section id="ads" class="max-w-6xl mx-auto px-4 pb-10">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-4xl md:text-5xl font-black">Ads</h2>
-        <p class="mt-2 text-neutral-300">Reels, brand promos, and image ads built to convert.</p>
-      </div>
+<!-- ADS -->
+<section id="ads" class="max-w-6xl mx-auto px-4 pb-14">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h2 class="text-4xl md:text-5xl font-black">Ads</h2>
+      <p class="mt-2 text-neutral-300">Reels, clothing brand ads, and image ads we’ve created.</p>
     </div>
+  </div>
 
-    <!-- Reels -->
-    <div class="mt-10">
-      <h3 class="text-2xl font-bold">Reels</h3>
-      <p class="text-neutral-400 text-sm mt-1">Add MP4/H.264 files or Instagram embeds when ready.</p>
-      <div class="mt-4 grid md:grid-cols-2 gap-6">
-        <div class="group rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40 p-3">
-          <!-- Placeholder; replace with <video src="reel-01.mp4" ...> -->
-          <div class="aspect-video rounded-xl bg-neutral-800 grid place-items-center text-neutral-400 text-sm">
-            Add reel: <code>reel-01.mp4</code>
-          </div>
-          <div class="mt-2 text-xs text-neutral-400">Hook-first edit • 9–12s • Reels/TT</div>
-        </div>
-        <div class="group rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40 p-3">
-          <div class="aspect-video rounded-xl bg-neutral-800 grid place-items-center text-neutral-400 text-sm">
-            Add reel: <code>reel-02.mp4</code>
-          </div>
-          <div class="mt-2 text-xs text-neutral-400">UGC-style motion • 6–8s • Stories</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Clothing Brand Ads -->
-    <div class="mt-12">
-      <h3 class="text-2xl font-bold">Clothing Brand Ads</h3>
-      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="allweneedismoney.png" alt="All We Need Is Money Hoodie">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">All We Need Is Money Hoodie</div>
-        </div>
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="stussy.png" alt="Stüssy Dogs Graphic">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">Stüssy Dogs Graphic</div>
-        </div>
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="statueofliberty.png" alt="Statue of Liberty Set">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">Statue of Liberty Set</div>
-        </div>
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <!-- MOVED the old hero image into Clothing Brand Ads -->
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="hs.png" alt="Moda fit ad">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">Moda Fit Ad</div>
-        </div>
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="ghostfit.png" alt="Ghostfit Outfit">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">Ghostfit Outfit</div>
-        </div>
-        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-          <img class="w-full h-64 object-cover group-hover:scale-105 transition" src="tuffzipup.png" alt="Tuff Zip-Up">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-3 left-3 text-sm">Tuff Zip-Up</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Image Ads -->
+  <!-- CLOTHING BRAND ADS (carousel) -->
   <div class="mt-10">
-    <h3 class="text-2xl font-bold mb-4">Image Ads</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./imagead1.png" alt="Image Ad 1" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Image Ad 1</div>
+    <h3 class="text-2xl font-bold mb-4">Clothing Brand Ads</h3>
+
+    <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
+      <div class="relative" data-carousel="clothing">
+        <!-- slides -->
+        <div class="overflow-hidden rounded-xl aspect-[4/3] bg-neutral-800">
+          <img class="slide w-full h-full object-cover hidden" src="./allweneedismoney.png" alt="All We Need Is Money Hoodie" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./stussy.png" alt="Stüssy Dogs Graphic" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./hs.png" alt="Moda Fit Ad" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./ghostfit.png" alt="Ghostfit Outfit" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./tuffzipup.png" alt="Tuff Zip-Up" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./yellowhoodie.png" alt="Yellow Hoodie" loading="lazy">
+        </div>
+
+        <!-- controls -->
+        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
+
+        <!-- dots injected here -->
+        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./imagead2.png" alt="Image Ad 2" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Image Ad 2</div>
+    </div>
+  </div>
+
+  <!-- REELS (carousel) -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold mb-4">Reels</h3>
+
+    <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
+      <div class="relative" data-carousel="reels">
+        <div class="overflow-hidden rounded-xl aspect-video bg-neutral-800 grid place-items-center">
+          <!-- Replace these with <video> thumbnails or embeds when ready -->
+          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 01 (add video/embed)</div>
+          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 02 (add video/embed)</div>
+          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 03 (add video/embed)</div>
+        </div>
+
+        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
+
+        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE ADS (carousel) -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold mb-4">Image Ads</h3>
+
+    <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
+      <div class="relative" data-carousel="image-ads">
+        <div class="overflow-hidden rounded-xl aspect-[4/3] bg-neutral-800">
+          <img class="slide w-full h-full object-cover hidden" src="./imagead1.png" alt="Image Ad 1" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./imagead2.png" alt="Image Ad 2" loading="lazy">
+        </div>
+
+        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
+
+        <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
 </section>
+
 
   <!-- DESIGNS -->
   <section id="designs" class="max-w-6xl mx-auto px-4 pb-6">
