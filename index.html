@@ -178,68 +178,57 @@
     </div>
   </div>
 
-  <!-- CLOTHING BRAND ADS (carousel) -->
+  <!-- CLOTHING BRAND ADS -->
   <div class="mt-10">
     <h3 class="text-2xl font-bold mb-4">Clothing Brand Ads</h3>
-
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="clothing">
-        <!-- slides -->
-        <div class="overflow-hidden rounded-xl aspect-[4/3] bg-neutral-800">
-          <img class="slide w-full h-full object-cover hidden" src="./allweneedismoney.png" alt="All We Need Is Money Hoodie" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./stussy.png" alt="Stüssy Dogs Graphic" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./statueofliberty.png" alt="Statue of Liberty Set" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./hs.png" alt="Moda Fit Ad" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./ghostfit.png" alt="Ghostfit Outfit" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./tuffzipup.png" alt="Tuff Zip-Up" loading="lazy">
-          <img class="slide w-full h-full object-cover hidden" src="./yellowhoodie.png" alt="Yellow Hoodie" loading="lazy">
+        <!-- smaller viewport -->
+        <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
+          <!-- First slide VISIBLE by default -->
+          <img class="slide w-full h-full object-cover"        src="./allweneedismoney.png" alt="All We Need Is Money Hoodie" loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./stussy.png"            alt="Stüssy Dogs Graphic"       loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./statueofliberty.png"   alt="Statue of Liberty Set"     loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./hs.png"                alt="Moda Fit Ad"                loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./ghostfit.png"          alt="Ghostfit Outfit"           loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./tuffzipup.png"         alt="Tuff Zip-Up"                loading="lazy">
+          <img class="slide w-full h-full object-cover hidden" src="./yellowhoodie.png"      alt="Yellow Hoodie"              loading="lazy">
         </div>
-
-        <!-- controls -->
-        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
         <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-
-        <!-- dots injected here -->
         <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
 
-  <!-- REELS (carousel) -->
+  <!-- REELS -->
   <div class="mt-12">
     <h3 class="text-2xl font-bold mb-4">Reels</h3>
-
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="reels">
-        <div class="overflow-hidden rounded-xl aspect-video bg-neutral-800 grid place-items-center">
-          <!-- Replace these with <video> thumbnails or embeds when ready -->
-          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 01 (add video/embed)</div>
-          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 02 (add video/embed)</div>
-          <div class="slide hidden w-full h-full grid place-items-center text-neutral-400">Reel 03 (add video/embed)</div>
+        <div class="overflow-hidden rounded-xl aspect-video bg-neutral-800 max-h-72 mx-auto grid place-items-center">
+          <div class="slide w-full h-full grid place-items-center text-neutral-400">Reel 01 (add video/embed)</div>
+          <div class="slide w-full h-full grid place-items-center text-neutral-400 hidden">Reel 02 (add video/embed)</div>
+          <div class="slide w-full h-full grid place-items-center text-neutral-400 hidden">Reel 03 (add video/embed)</div>
         </div>
-
-        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
         <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-
         <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
   </div>
 
-  <!-- IMAGE ADS (carousel) -->
+  <!-- IMAGE ADS -->
   <div class="mt-12">
     <h3 class="text-2xl font-bold mb-4">Image Ads</h3>
-
     <div class="rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
       <div class="relative" data-carousel="image-ads">
-        <div class="overflow-hidden rounded-xl aspect-[4/3] bg-neutral-800">
-          <img class="slide w-full h-full object-cover hidden" src="./imagead1.png" alt="Image Ad 1" loading="lazy">
+        <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
+          <img class="slide w-full h-full object-cover"        src="./imagead1.png" alt="Image Ad 1" loading="lazy">
           <img class="slide w-full h-full object-cover hidden" src="./imagead2.png" alt="Image Ad 2" loading="lazy">
         </div>
-
-        <button type="button" class="abs-btn left-2" data-action="prev" aria-label="Previous slide">‹</button>
+        <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
         <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
-
         <div class="dots mt-3 flex items-center justify-center gap-2"></div>
       </div>
     </div>
@@ -247,55 +236,36 @@
 </section>
 
 
-  <!-- DESIGNS -->
-  <section id="designs" class="max-w-6xl mx-auto px-4 pb-6">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <!-- ONLY ONE HEADER NOW -->
-        <h2 class="text-3xl md:text-4xl font-black">Designs</h2>
-        <p class="mt-2 text-neutral-300">Artwork and visuals we’ve created.</p>
-      </div>
-    </div>
 
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./1800raceme-copy.jpg" alt="Drift Racers Design" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Drift Racers Design</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./bmw.jpg" alt="BMW Cross Design" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">BMW Cross Design</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./bradpitt-1.jpg" alt="Brad Pitt Neon" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Brad Pitt Neon</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./bradpitt-2.jpg" alt="Brad Pitt Gold" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Brad Pitt Gold</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./cross.jpg" alt="Cross Graphic" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Cross Graphic</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./divine.jpg" alt="Divine Graphic" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Divine Graphic</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./dog.jpg" alt="Dog Graphic" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Dog Graphic</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./kd.jpg" alt="Basketball Graphic" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Basketball Graphic</div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/40">
-        <img class="w-full h-64 object-cover" src="./snow-people.jpg" alt="Snow People Graphic" loading="lazy" decoding="async">
-        <div class="p-3 text-sm">Snow People Graphic</div>
-      </div>
+  <!-- DESIGNS -->
+<section id="designs" class="max-w-6xl mx-auto px-4 pb-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h2 class="text-3xl md:text-4xl font-black">Designs</h2>
+      <p class="mt-2 text-neutral-300">Artwork and visuals we’ve created.</p>
     </div>
-  </section>
+  </div>
+
+  <div class="mt-6 rounded-2xl border border-white/10 bg-neutral-900/40 p-3">
+    <div class="relative" data-carousel="designs">
+      <div class="overflow-hidden rounded-xl aspect-[16/10] md:aspect-[4/3] bg-neutral-800 max-h-80 mx-auto">
+        <!-- First slide visible -->
+        <img class="slide w-full h-full object-cover"        src="./1800raceme-copy.jpg" alt="Drift Racers" loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./bmw.jpg"             alt="BMW Cross"    loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./bradpitt-1.jpg"      alt="Brad Pitt 1"  loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./bradpitt-2.jpg"      alt="Brad Pitt 2"  loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./cross.jpg"           alt="Cross"        loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./divine.jpg"          alt="Divine"       loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./dog.jpg"             alt="Dog"          loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./kd.jpg"              alt="Basketball"   loading="lazy">
+        <img class="slide w-full h-full object-cover hidden" src="./snow-people.jpg"     alt="Snow People"  loading="lazy">
+      </div>
+      <button type="button" class="abs-btn left-2"  data-action="prev" aria-label="Previous slide">‹</button>
+      <button type="button" class="abs-btn right-2" data-action="next" aria-label="Next slide">›</button>
+      <div class="dots mt-3 flex items-center justify-center gap-2"></div>
+    </div>
+  </div>
+</section>
 
   <!-- PRICING → replaced by CTA -->
   <section id="pricing" class="max-w-6xl mx-auto px-4 py-20">
